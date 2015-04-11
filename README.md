@@ -1,7 +1,7 @@
 # GoogleTagManagerBundle
 
 [![Software License](https://img.shields.io/badge/license-LGPL%203.0-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://travis-ci.org/xyNNN/GoogleTagManagerBundle.svg?branch=develop)](https://travis-ci.org/xyNNN/GoogleTagManagerBundle)
+[![Build Status](https://travis-ci.org/xyNNN/GoogleTagManagerBundle.svg?branch=master)](https://travis-ci.org/xyNNN/GoogleTagManagerBundle)
 
 The GoogleTagManagerBundle provides you an easy-to-use method to integrate the Google Tag Manager into your Symfony 2 application.
 
