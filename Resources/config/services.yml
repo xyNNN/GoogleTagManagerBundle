@@ -1,0 +1,21 @@
+services:
+    google_tag_manager.factory:
+        class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerFactory
+        calls:
+            - [setContainer, [@service_container]]
+
+    google_tag_manager:
+        class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager
+        factory: ["@google_tag_manager.factory", create]
+
+    templating.helper.google_tag_manager:
+        class: Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper
+        arguments: ["@google_tag_manager"]
+        tags:
+            - { name: "templating.helper", alias: "google_tag_manager" }
+
+    twig.extension.google_tag_manager:
+        class: Xynnn\GoogleTagManagerBundle\Extension\GoogleTagManagerExtension
+        arguments: ["@templating.helper.google_tag_manager"]
+        tags:
+            - { name: "twig.extension" }
