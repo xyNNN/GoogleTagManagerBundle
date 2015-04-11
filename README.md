@@ -1,6 +1,7 @@
 # GoogleTagManagerBundle
 
 [![Software License](https://img.shields.io/badge/license-LGPL%203.0-brightgreen.svg?style=flat-square)](LICENSE)
+[![Build Status](https://travis-ci.org/xyNNN/GoogleTagManagerBundle.svg?branch=master)](https://travis-ci.org/xyNNN/GoogleTagManagerBundle)
 
 The GoogleTagManagerBundle provides you an easy-to-use method to integrate the Google Tag Manager into your Symfony 2 application.
 
@@ -19,7 +20,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require xynnn/google-tag-manager-bundle
+$ composer require xynnn/google-tag-manager-bundle "~1.0"
 ```
 
 This command requires you to have Composer installed globally, as explained
