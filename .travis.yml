@@ -7,7 +7,9 @@ php:
 
 sudo: false
 
-install: composer install
+before_script:
+    - composer self-update
+    - composer install
 
 notifications:
   email: philipp.braeutigam@googlemail.com
