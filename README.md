@@ -9,7 +9,7 @@ The GoogleTagManagerBundle provides you an easy-to-use method to integrate the G
 ## Requirements
 
 - [x] PHP 5.3 and higher
-- [x] Symfony 2.3 and higher
+- [x] Symfony 2.0 and higher
 
 ## Install
 
@@ -51,6 +51,32 @@ class AppKernel extends Kernel
 
     // ...
 }
+```
+
+### Step 3: Enable Google Tag Manager
+
+Add the configuration to your yaml file. Please don't forget to adjust your Google Tag Manager Id.
+
+### Step 4: Insert the ViewHelper
+
+Insert the ViewHelper into your layout file to enable the Google Tag Manager.
+Please be aware to insert into right after the HTML body tag!
+
+```html
+<body>
+{{ google_tag_manager() }}
+...
+</body>
+```
+
+### Step 5: Fill up the DataLayer from Google Tag Manager (Optional)
+
+If you want to send some information to the Google Tag Manager, you can use the dataLayer.
+
+```php
+/** @var GoogleTagManager $manager */
+$manager = $this->get('google_tag_manager');
+$manager->addData('example', 'value');
 ```
 
 ## Configuration
