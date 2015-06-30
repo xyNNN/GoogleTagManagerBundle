@@ -86,7 +86,7 @@ $manager->addData('example', 'value');
 google_tag_manager:
     enabled: true
     id: "GTM-XXXXXX"
-    appendTo: top|bottom
+    autoAppend: true|false
 ```
 
 ## Authors

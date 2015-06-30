@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
         $rootNode->children()->scalarNode('id');
 
         $rootNode->children()
-            ->scalarNode('appendTo')
+            ->booleanNode('autoAppend')
             ->defaultFalse();
 
         $rootNode->end();

@@ -12,12 +12,12 @@ class GoogleTagManagerListener
 {
     private $twig;
 
-    private $appendTo;
+    private $autoAppend;
 
-    public function __construct($serviceContainer, $appendTo)
+    public function __construct($serviceContainer, $autoAppend)
     {
         $this->twig = $serviceContainer->get('twig');
-        $this->appendTo = $appendTo;
+        $this->autoAppend = (bool) $autoAppend;
     }
 
     /**
@@ -29,10 +29,9 @@ class GoogleTagManagerListener
     {
         $response = $event->getResponse();
         $contentType = $response->headers->get('content-type');
-        $appendTo = strtolower($this->appendTo);
 
         // not configured to append automatically
-        if ( ! in_array($appendTo, ['top', 'bottom'])) {
+        if ( ! $this->autoAppend) {
             return false;
         }
 
@@ -46,32 +45,12 @@ class GoogleTagManagerListener
             ->getExtension('google_tag_manager')
             ->render($this->twig);
 
-        // decide where to append
-        switch ($appendTo)
-        {
-            case 'top':
-                $content = $this->appendTop($template, $response->getContent());
-                break;
-
-            case 'bottom':
-            default:
-                $content = $this->appendBottom($template, $response->getContent());
-                break;
-        }
+        // insert container immediately after opening <body>
+        $content = preg_replace('/<body\b[^>]*>/', "$0" . $template, $response->getContent(), 1);
 
         // update the response
         $response->setContent($content);
 
         return true;
-    }
-
-    private function appendTop($snippet, $content)
-    {
-        return preg_replace('/<body\b[^>]*>/', "$0" . $snippet, $content, 1);
-    }
-
-    private function appendBottom($snippet, $content)
-    {
-        return str_replace('</body>', $snippet . '</body>', $content);
     }
 }
