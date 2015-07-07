@@ -1,7 +1,7 @@
 <!-- Google Tag Manager START -->
 {% if data is not null %}
 <script>
-	dataLayer = [{ {% for key, value in data %}'{{ key }}': '{{ value }}'{% if loop.last %}{% else %}, {% endif %}{% endfor %} }];
+	dataLayer = [{{ data|json_encode }}];
 </script>
 {% endif %}
 
