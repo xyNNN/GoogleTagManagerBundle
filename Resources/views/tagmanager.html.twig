@@ -1,7 +1,7 @@
 <!-- Google Tag Manager START -->
 {% if data is not null %}
 <script>
-	dataLayer = [{{ data|json_encode }}];
+	dataLayer = [{{ data|json_encode|raw }}];
 </script>
 {% endif %}
 
