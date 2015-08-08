@@ -50,7 +50,7 @@ class GoogleTagManagerHelper extends Helper
     }
 
     /**
-     * @return bool
+     * @return string
      */
     public function getId()
     {
