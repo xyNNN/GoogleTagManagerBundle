@@ -2,7 +2,7 @@ services:
     google_tag_manager.factory:
         class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerFactory
         calls:
-            - [setContainer, [@service_container]]
+            - [setContainer, ["@service_container"]]
 
     google_tag_manager:
         class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager
