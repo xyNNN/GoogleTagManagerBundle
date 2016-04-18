@@ -1,7 +1,7 @@
 {
     "name": "xynnn/google-tag-manager-bundle",
     "type": "symfony-bundle",
-    "description": "Google Tag Manager Bundle for Symfony 2",
+    "description": "Google Tag Manager Bundle for Symfony",
     "keywords": ["Google Tag Manager", "Tag Manager"],
     "homepage": "https://github.com/xyNNN/GoogleTagManagerBundle",
     "license": "GNU LGPL v3.0",
