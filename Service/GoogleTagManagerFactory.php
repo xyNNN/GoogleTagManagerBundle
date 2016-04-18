@@ -10,7 +10,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Service;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -18,8 +18,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @package Xynnn\GoogleTagManagerBundle\Service
  */
-class GoogleTagManagerFactory extends ContainerAware
+class GoogleTagManagerFactory
 {
+    use ContainerAwareTrait;
+
     /**
      * @return ContainerInterface
      */
