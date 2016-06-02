@@ -40,6 +40,11 @@ class GoogleTagManagerListener
             return false;
         }
 
+        // only append to master request
+        if ( ! $event->isMasterRequest()) {
+            return false;
+        }
+
         // render the GTM Twig template
         $template = $this->twig
             ->getExtension('google_tag_manager')
