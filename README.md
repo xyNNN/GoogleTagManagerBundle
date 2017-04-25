@@ -65,10 +65,21 @@ Please be aware to insert into right after the HTML body tag!
 
 ```html
 <body>
-{{ google_tag_manager() }}
+{{ google_tag_manager('body') }}
 ...
 </body>
 ```
+
+And right after the HTML head tag:
+
+```html
+<head>
+{{ google_tag_manager('head') }}
+...
+</head>
+```
+
+Or use the `autoAppend` setting to let a kernel reponse listener add them to your layout automatically.
 
 ### Step 5: Fill up the DataLayer from Google Tag Manager (Optional)
 

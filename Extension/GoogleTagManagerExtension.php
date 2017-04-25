@@ -21,6 +21,10 @@ use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper;
  */
 class GoogleTagManagerExtension extends Twig_Extension
 {
+    const AREA_FULL = 'full';
+    const AREA_HEAD = 'head';
+    const AREA_BODY = 'body';
+
     /** @var HelperInterface $helper */
     private $helper;
 
@@ -55,7 +59,7 @@ class GoogleTagManagerExtension extends Twig_Extension
      *
      * @return string
      */
-    public function render(\Twig_Environment $twig)
+    public function render(\Twig_Environment $twig, $area = self::AREA_FULL)
     {
         /** @var GoogleTagManagerHelper $helper */
         $helper = $this->getHelper();
@@ -64,8 +68,18 @@ class GoogleTagManagerExtension extends Twig_Extension
            return false;
         }
 
+        switch($area) {
+            case self::AREA_HEAD:
+                $template = 'tagmanager_head'; break;
+            case self::AREA_BODY:
+                $template = 'tagmanager_body'; break;
+            case self::AREA_FULL:
+            default:
+                $template = 'tagmanager'; break;
+        }
+
         return $twig->render(
-            'GoogleTagManagerBundle::tagmanager.html.twig', array(
+            'GoogleTagManagerBundle::' . $template . '.html.twig', array(
                 'id' => $helper->getId(),
                 'data' => $helper->hasData() ? $helper->getData() : null
             )
