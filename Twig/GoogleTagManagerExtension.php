@@ -13,6 +13,7 @@ namespace Xynnn\GoogleTagManagerBundle\Twig;
 use Symfony\Component\Templating\Helper\HelperInterface;
 use Twig_Extension;
 use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper;
+use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
 
 /**
  * Class GoogleTagManagerExtension
@@ -26,14 +27,14 @@ class GoogleTagManagerExtension extends Twig_Extension
     const AREA_BODY = 'body';
 
     /**
-     * @var HelperInterface
+     * @var GoogleTagManagerHelperInterface
      */
     private $helper;
 
     /**
-     * @param GoogleTagManagerHelper $helper
+     * @param GoogleTagManagerHelperInterface $helper
      */
-    public function __construct(HelperInterface $helper)
+    public function __construct(GoogleTagManagerHelperInterface $helper)
     {
         $this->helper = $helper;
     }
@@ -66,7 +67,6 @@ class GoogleTagManagerExtension extends Twig_Extension
      */
     public function render(\Twig_Environment $twig)
     {
-
         return $this->getRenderedTemplate($twig, self::AREA_FULL);
     }
 
