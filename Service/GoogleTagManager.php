@@ -15,58 +15,22 @@ namespace Xynnn\GoogleTagManagerBundle\Service;
  *
  * @package Xynnn\GoogleTagManagerBundle\Service
  */
-class GoogleTagManager
+class GoogleTagManager implements GoogleTagManagerInterface
 {
-    /** @var bool $enabled */
+    /**
+     * @var bool
+     */
     private $enabled;
 
-    /** @var string $id */
+    /**
+     * @var string
+     */
     private $id;
 
-    /** @var array $data */
-    private $data;
-
     /**
-     * @param $key
-     * @param $value
+     * @var array
      */
-    public function addData($key, $value)
-    {
-        $this->data[$key] = $value;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return (bool) $this->enabled;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return array
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasData()
-    {
-        return is_array($this->getData())
-        && count($this->getData()) > 0;
-    }
+    private $data = [];
 
     /**
      * @param $enabled
@@ -74,8 +38,48 @@ class GoogleTagManager
      */
     public function __construct($enabled, $id)
     {
-        $this->enabled = $enabled;
+        $this->enabled = (bool)$enabled;
         $this->id = $id;
-        $this->data = array();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addData($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasData()
+    {
+        return is_array($this->getData())
+        && count($this->getData()) > 0;
     }
 }

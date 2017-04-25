@@ -11,7 +11,7 @@
 namespace Xynnn\GoogleTagManagerBundle\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager;
+use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerInterface;
 
 /**
  * Class GoogleTagManagerHelper
@@ -20,11 +20,11 @@ use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager;
  */
 class GoogleTagManagerHelper extends Helper
 {
-    /** @var GoogleTagManager $service */
+    /** @var GoogleTagManagerInterface $service */
     private $service;
 
     /**
-     * @return GoogleTagManager
+     * @return GoogleTagManagerInterface
      */
     private function getService()
     {
@@ -32,9 +32,9 @@ class GoogleTagManagerHelper extends Helper
     }
 
     /**
-     * @param GoogleTagManager $service
+     * @param GoogleTagManagerInterface $service
      */
-    public function __construct(GoogleTagManager $service)
+    public function __construct(GoogleTagManagerInterface $service)
     {
         $this->service = $service;
     }

@@ -30,6 +30,9 @@ class GoogleTagManagerFactory
         return $this->container;
     }
 
+    /**
+     * @return GoogleTagManagerInterface
+     */
     public function create()
     {
         $container = $this->getContainer();
