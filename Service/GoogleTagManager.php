@@ -30,7 +30,7 @@ class GoogleTagManager implements GoogleTagManagerInterface
     /**
      * @var array
      */
-    private $data = [];
+    private $data = array();
 
     /**
      * @param $enabled
