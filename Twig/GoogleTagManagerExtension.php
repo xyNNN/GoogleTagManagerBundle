@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Xynnn\GoogleTagManagerBundle\Extension;
+namespace Xynnn\GoogleTagManagerBundle\Twig;
 
 use Symfony\Component\Templating\Helper\HelperInterface;
 use Twig_Extension;

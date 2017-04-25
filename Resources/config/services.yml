@@ -15,7 +15,7 @@ services:
             - { name: "templating.helper", alias: "google_tag_manager" }
 
     twig.extension.google_tag_manager:
-        class: Xynnn\GoogleTagManagerBundle\Extension\GoogleTagManagerExtension
+        class: Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension
         arguments: ["@templating.helper.google_tag_manager"]
         tags:
             - { name: "twig.extension" }

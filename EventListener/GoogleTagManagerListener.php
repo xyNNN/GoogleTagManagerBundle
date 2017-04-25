@@ -3,6 +3,7 @@
 namespace Xynnn\GoogleTagManagerBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 
 /**
  * Class GoogleTagManagerListener
@@ -37,27 +38,30 @@ class GoogleTagManagerListener
      */
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        $response = $event->getResponse();
-
         if (!$this->allowRender($event)) {
             return false;
         }
 
-        // render the GTM Twig template
-        $template = $this->twig
+        $response = $event->getResponse();
+
+        // Render the GTM Twig template for after <head>
+        $templateHead = $this->twig
             ->getExtension('google_tag_manager')
-            ->render($this->twig, \Xynnn\GoogleTagManagerBundle\Extension\GoogleTagManagerExtension::AREA_HEAD);
+            ->renderHead($this->twig);
 
-        // insert container immediately after opening <head>
-        $content = preg_replace('/<head\b[^>]*>/', "$0" . $template, $response->getContent(), 1);
-
-        // render the GTM Twig template for <noscript>
-        $template = $this->twig
+        // render the GTM Twig template for after <body>
+        $templateBody = $this->twig
             ->getExtension('google_tag_manager')
-            ->render($this->twig, \Xynnn\GoogleTagManagerBundle\Extension\GoogleTagManagerExtension::AREA_BODY);
+            ->renderBody($this->twig);
 
-        // insert container immediately after opening <body>
-        $content = preg_replace('/<body\b[^>]*>/', "$0" . $template, $response->getContent(), 1);
+        // Insert container immediately after opening <head> or <body>
+        $content = preg_replace(array(
+            '/<head\b[^>]*>/',
+            '/<body\b[^>]*>/'
+        ), array(
+            "$0" . $templateHead,
+            "$0" . $templateBody
+        ), $response->getContent(), 1);
 
         // update the response
         $response->setContent($content);
