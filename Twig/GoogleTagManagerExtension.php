@@ -47,21 +47,24 @@ class GoogleTagManagerExtension extends Twig_Extension
         return array(
             new \Twig_SimpleFunction('google_tag_manager', array($this, 'render'), array(
                 'is_safe' => array('html'),
-                'needs_environment' => true
+                'needs_environment' => true,
+                'deprecated' => true,
             )),
             new \Twig_SimpleFunction('google_tag_manager_body', array($this, 'renderBody'), array(
                 'is_safe' => array('html'),
-                'needs_environment' => true
+                'needs_environment' => true,
             )),
             new \Twig_SimpleFunction('google_tag_manager_head', array($this, 'renderHead'), array(
                 'is_safe' => array('html'),
-                'needs_environment' => true
+                'needs_environment' => true,
             )),
         );
     }
 
     /**
      * @param \Twig_Environment $twig
+     *
+     * @deprecated Use `renderHead` and `renderBody`
      *
      * @return string
      */
