@@ -28,14 +28,12 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('google_tag_manager');
 
-        $rootNode->children()->booleanNode('enabled');
-        $rootNode->children()->scalarNode('id');
-
-        $rootNode->children()
-            ->booleanNode('autoAppend')
-            ->defaultFalse();
-
-        $rootNode->end();
+        $rootNode
+            ->children()
+                ->booleanNode('enabled')->end()
+                ->scalarNode('id')->end()
+                ->booleanNode('autoAppend')->defaultFalse()->end()
+            ->end();
 
         return $treeBuilder;
     }
