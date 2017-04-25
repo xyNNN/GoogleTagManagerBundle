@@ -8,21 +8,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Xynnn\GoogleTagManagerBundle\Service;
+namespace Xynnn\GoogleTagManagerBundle\Helper;
+
+use Symfony\Component\Templating\Helper\Helper;
+use Symfony\Component\Templating\Helper\HelperInterface;
+use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerInterface;
 
 /**
- * Interface GoogleTagManagerInterface
+ * Interface GoogleTagManagerHelperInterface
  *
- * @package Xynnn\GoogleTagManagerBundle\Service
+ * @package Xynnn\GoogleTagManagerBundle\Helper
  */
-interface GoogleTagManagerInterface
+interface GoogleTagManagerHelperInterface extends HelperInterface
 {
-    /**
-     * @param $key
-     * @param $value
-     */
-    public function addData($key, $value);
-
     /**
      * @return bool
      */

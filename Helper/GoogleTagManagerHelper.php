@@ -18,18 +18,12 @@ use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerInterface;
  *
  * @package Xynnn\GoogleTagManagerBundle\Helper
  */
-class GoogleTagManagerHelper extends Helper
+class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInterface
 {
-    /** @var GoogleTagManagerInterface $service */
-    private $service;
-
     /**
-     * @return GoogleTagManagerInterface
+     * @var GoogleTagManagerInterface
      */
-    private function getService()
-    {
-        return $this->service;
-    }
+    private $service;
 
     /**
      * @param GoogleTagManagerInterface $service
@@ -40,44 +34,40 @@ class GoogleTagManagerHelper extends Helper
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isEnabled()
     {
-        $service = $this->getService();
-
-        return $service->isEnabled();
+        return $this->service->isEnabled();
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
-        $service = $this->getService();
-
-        return $service->getId();
+        return $this->service->getId();
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getData()
     {
-        $service = $this->getService();
-
-        return $service->getData();
+        return $this->service->getData();
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasData()
     {
-        return is_array($this->getData())
-            && count($this->getData()) > 0;
+        return $this->service->hasData();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'google_tag_manager';

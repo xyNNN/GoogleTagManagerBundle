@@ -66,17 +66,30 @@ Please be aware to insert into right after the HTML body tag!
 
 ```html
 <body>
-{{ google_tag_manager() }}
+{{ google_tag_manager_body }}
 ...
 </body>
 ```
+
+And right after the HTML head tag:
+
+```html
+<head>
+{{ google_tag_manager_head }}
+...
+</head>
+```
+
+Or use the `autoAppend` setting to let a kernel reponse listener add them to your layout automatically.
+
+Additional instructions: https://developers.google.com/tag-manager/quickstart
 
 ### Step 5: Fill up the DataLayer from Google Tag Manager (Optional)
 
 If you want to send some information to the Google Tag Manager, you can use the dataLayer.
 
 ```php
-/** @var GoogleTagManager $manager */
+/** @var GoogleTagManagerInterface $manager */
 $manager = $this->get('google_tag_manager');
 $manager->addData('example', 'value');
 ```
