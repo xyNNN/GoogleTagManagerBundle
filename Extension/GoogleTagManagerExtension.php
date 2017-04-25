@@ -25,32 +25,37 @@ class GoogleTagManagerExtension extends Twig_Extension
     const AREA_HEAD = 'head';
     const AREA_BODY = 'body';
 
-    /** @var HelperInterface $helper */
+    /**
+     * @var HelperInterface
+     */
     private $helper;
 
     /**
-     * @return HelperInterface
-     */
-    private function getHelper()
-    {
-        return $this->helper;
-    }
-
-    /**
-     * @param HelperInterface $helper
+     * @param GoogleTagManagerHelper $helper
      */
     public function __construct(HelperInterface $helper)
     {
         $this->helper = $helper;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
             new \Twig_SimpleFunction('google_tag_manager', array($this, 'render'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true
-            ))
+            )),
+            new \Twig_SimpleFunction('google_tag_manager_body', array($this, 'renderBody'), array(
+                'is_safe' => array('html'),
+                'needs_environment' => true
+            )),
+            new \Twig_SimpleFunction('google_tag_manager_head', array($this, 'renderHead'), array(
+                'is_safe' => array('html'),
+                'needs_environment' => true
+            )),
         );
     }
 
@@ -59,31 +64,30 @@ class GoogleTagManagerExtension extends Twig_Extension
      *
      * @return string
      */
-    public function render(\Twig_Environment $twig, $area = self::AREA_FULL)
+    public function render(\Twig_Environment $twig)
     {
-        /** @var GoogleTagManagerHelper $helper */
-        $helper = $this->getHelper();
 
-        if (!$helper->isEnabled()) {
-           return false;
-        }
+        return $this->getRenderedTemplate($twig, self::AREA_FULL);
+    }
 
-        switch($area) {
-            case self::AREA_HEAD:
-                $template = 'tagmanager_head'; break;
-            case self::AREA_BODY:
-                $template = 'tagmanager_body'; break;
-            case self::AREA_FULL:
-            default:
-                $template = 'tagmanager'; break;
-        }
+    /**
+     * @param \Twig_Environment $twig
+     *
+     * @return string
+     */
+    public function renderHead(\Twig_Environment $twig)
+    {
+        return $this->getRenderedTemplate($twig, self::AREA_HEAD);
+    }
 
-        return $twig->render(
-            'GoogleTagManagerBundle::' . $template . '.html.twig', array(
-                'id' => $helper->getId(),
-                'data' => $helper->hasData() ? $helper->getData() : null
-            )
-        );
+    /**
+     * @param \Twig_Environment $twig
+     *
+     * @return string
+     */
+    public function renderBody(\Twig_Environment $twig)
+    {
+        return $this->getRenderedTemplate($twig, self::AREA_BODY);
     }
 
     /**
@@ -92,5 +96,41 @@ class GoogleTagManagerExtension extends Twig_Extension
     public function getName()
     {
         return 'google_tag_manager';
+    }
+
+    /**
+     * @param $area
+     * @return string
+     */
+    private function getTemplate($area)
+    {
+        switch ($area) {
+            case self::AREA_HEAD:
+                return 'tagmanager_head';
+            case self::AREA_BODY:
+                return 'tagmanager_body';
+            case self::AREA_FULL:
+            default:
+                return 'tagmanager';
+        }
+    }
+
+    /**
+     * @param \Twig_Environment $twig
+     * @param $area
+     * @return string
+     */
+    private function getRenderedTemplate(\Twig_Environment $twig, $area)
+    {
+        if (!$this->helper->isEnabled()) {
+            return false;
+        }
+
+        return $twig->render(
+            'GoogleTagManagerBundle::' . $this->getTemplate($area) . '.html.twig', array(
+                'id' => $this->helper->getId(),
+                'data' => $this->helper->hasData() ? $this->helper->getData() : null
+            )
+        );
     }
 }

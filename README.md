@@ -65,7 +65,7 @@ Please be aware to insert into right after the HTML body tag!
 
 ```html
 <body>
-{{ google_tag_manager('body') }}
+{{ google_tag_manager_body }}
 ...
 </body>
 ```
@@ -74,7 +74,7 @@ And right after the HTML head tag:
 
 ```html
 <head>
-{{ google_tag_manager('head') }}
+{{ google_tag_manager_head }}
 ...
 </head>
 ```
