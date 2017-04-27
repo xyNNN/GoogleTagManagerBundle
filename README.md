@@ -1,10 +1,9 @@
 # GoogleTagManagerBundle
 
-[![Join the chat at https://gitter.im/GoogleTagManagerBundle/Lobby](https://badges.gitter.im/GoogleTagManagerBundle/Lobby.svg)](https://gitter.im/GoogleTagManagerBundle/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Software License](https://img.shields.io/badge/license-LGPL%203.0-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://travis-ci.org/xyNNN/GoogleTagManagerBundle.svg?branch=master)](https://travis-ci.org/xyNNN/GoogleTagManagerBundle)
 [![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/xyNNN/GoogleTagManagerBundle.svg)](https://scrutinizer-ci.com/g/xyNNN/GoogleTagManagerBundle)
+[![Join the chat at https://gitter.im/GoogleTagManagerBundle/Lobby](https://badges.gitter.im/GoogleTagManagerBundle/Lobby.svg)](https://gitter.im/GoogleTagManagerBundle/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The GoogleTagManagerBundle provides you an easy-to-use method to integrate the Google Tag Manager into your Symfony 2 application.
 
