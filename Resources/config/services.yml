@@ -1,12 +1,9 @@
 services:
-    google_tag_manager.factory:
-        class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerFactory
-        calls:
-            - [setContainer, ["@service_container"]]
-
     google_tag_manager:
-        class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager
-        factory: ["@google_tag_manager.factory", create]
+        class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerInterface
+        class:
+            - "%google_tag_manager.enabled%"
+            - "%google_tag_manager.id%"
 
     templating.helper.google_tag_manager:
         class: Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper
