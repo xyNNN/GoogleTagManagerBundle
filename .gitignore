@@ -1,6 +1,2 @@
-# Jetbrains
-.idea/
-
-# Composer
 vendor/
 composer.lock
