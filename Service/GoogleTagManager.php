@@ -63,7 +63,7 @@ class GoogleTagManager implements GoogleTagManagerInterface
      */
     public function mergeData($key, $value)
     {
-        $merge = [];
+        $merge = array();
         if (array_key_exists($key, $this->data)) {
             $merge = $this->data[$key];
         }
