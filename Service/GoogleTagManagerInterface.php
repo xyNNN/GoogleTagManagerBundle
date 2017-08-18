@@ -20,8 +20,23 @@ interface GoogleTagManagerInterface
     /**
      * @param $key
      * @param $value
+     * @deprecated Use 'setData' or 'mergeData' methods
      */
     public function addData($key, $value);
+
+    /**
+     * @param $key
+     * @param $value
+     * @return void
+     */
+    public function setData($key, $value);
+
+    /**
+     * @param $key
+     * @param $value
+     * @return void
+     */
+    public function mergeData($key, $value);
 
     /**
      * @return bool
