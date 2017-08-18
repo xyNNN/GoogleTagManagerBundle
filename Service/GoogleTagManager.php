@@ -68,7 +68,7 @@ class GoogleTagManager implements GoogleTagManagerInterface
             $merge = $this->data[$key];
         }
 
-        $this->setData($key, array_merge($merge, $value));
+        $this->setData($key, array_merge_recursive($merge, $value));
     }
 
     /**
