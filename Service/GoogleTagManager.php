@@ -47,7 +47,28 @@ class GoogleTagManager implements GoogleTagManagerInterface
      */
     public function addData($key, $value)
     {
+        $this->setData($key, $value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setData($key, $value)
+    {
         $this->data[$key] = $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function mergeData($key, $value)
+    {
+        $merge = array();
+        if (array_key_exists($key, $this->data)) {
+            $merge = $this->data[$key];
+        }
+
+        $this->setData($key, array_merge_recursive($merge, $value));
     }
 
     /**

@@ -92,7 +92,7 @@ If you want to send some information to the Google Tag Manager, you can use the 
 ```php
 /** @var GoogleTagManagerInterface $manager */
 $manager = $this->get('google_tag_manager');
-$manager->addData('example', 'value');
+$manager->setData('example', 'value');
 ```
 
 ## Configuration
