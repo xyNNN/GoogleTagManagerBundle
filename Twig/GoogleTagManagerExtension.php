@@ -25,6 +25,7 @@ class GoogleTagManagerExtension extends Twig_Extension
     const AREA_FULL = 'full';
     const AREA_HEAD = 'head';
     const AREA_BODY = 'body';
+    const AREA_BODY_END = 'body_end';
 
     /**
      * @var GoogleTagManagerHelperInterface
@@ -55,6 +56,10 @@ class GoogleTagManagerExtension extends Twig_Extension
                 'needs_environment' => true,
             )),
             new \Twig_SimpleFunction('google_tag_manager_head', array($this, 'renderHead'), array(
+                'is_safe' => array('html'),
+                'needs_environment' => true,
+            )),
+            new \Twig_SimpleFunction('google_tag_manager_body_end', array($this, 'renderBodyEnd'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
@@ -94,6 +99,16 @@ class GoogleTagManagerExtension extends Twig_Extension
     }
 
     /**
+     * @param \Twig_Environment $twig
+     *
+     * @return string
+     */
+    public function renderBodyEnd(\Twig_Environment $twig)
+    {
+        return $this->getRenderedTemplate($twig, self::AREA_BODY_END);
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -112,6 +127,8 @@ class GoogleTagManagerExtension extends Twig_Extension
                 return 'tagmanager_head';
             case self::AREA_BODY:
                 return 'tagmanager_body';
+            case self::AREA_BODY_END:
+                return 'tagmanager_body_end';
             case self::AREA_FULL:
             default:
                 return 'tagmanager';
@@ -132,7 +149,8 @@ class GoogleTagManagerExtension extends Twig_Extension
         return $twig->render(
             'GoogleTagManagerBundle::' . $this->getTemplate($area) . '.html.twig', array(
                 'id' => $this->helper->getId(),
-                'data' => $this->helper->hasData() ? $this->helper->getData() : null
+                'data' => $this->helper->hasData() ? $this->helper->getData() : null,
+                'push' => $this->helper->getPush() ? $this->helper->getPush() : null,
             )
         );
     }

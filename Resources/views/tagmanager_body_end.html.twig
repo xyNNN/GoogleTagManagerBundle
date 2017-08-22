@@ -1,0 +1,7 @@
+{% if push is not null %}
+    {% for val in push %}
+        <script type="text/javascript">
+            window.dataLayer.push({{ val|json_encode|raw }});
+        </script>
+    {% endfor %}
+{% endif %}

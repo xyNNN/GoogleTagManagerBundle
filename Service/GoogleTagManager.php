@@ -33,6 +33,11 @@ class GoogleTagManager implements GoogleTagManagerInterface
     private $data = array();
 
     /**
+     * @var array
+     */
+    private $push = array();
+
+    /**
      * @param $enabled
      * @param $id
      */
@@ -93,6 +98,22 @@ class GoogleTagManager implements GoogleTagManagerInterface
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addPush($value)
+    {
+        $this->push[] = $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPush()
+    {
+        return $this->push;
     }
 
     /**

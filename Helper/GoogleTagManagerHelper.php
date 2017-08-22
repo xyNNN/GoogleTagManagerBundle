@@ -68,6 +68,14 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     /**
      * {@inheritdoc}
      */
+    public function getPush()
+    {
+        return $this->service->getPush();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'google_tag_manager';

@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.3.0](https://github.com/xyNNN/GoogleTagManagerBundle/tree/2.3.0) (2017-08-22)
+
+[Full Changelog](https://github.com/xyNNN/GoogleTagManagerBundle/compare/2.2.0...2.3.0)
+
+**Implemented enhancements:**
+
+- Add support to push data to dataLayer that should not be in initial dataLayer in HEAD
+- Will insert pushes to dataLayer variable at bottom of HTML output to not block rendering
+
+## [2.2.0](https://github.com/xyNNN/GoogleTagManagerBundle/tree/2.2.0) (2017-08-21)
+
+[Full Changelog](https://github.com/xyNNN/GoogleTagManagerBundle/compare/2.1.0...2.2.0)
+
+**Implemented enhancements:**
+
+- Support to merge variables set on multiple locations in code
+
 ## [2.1.0](https://github.com/xyNNN/GoogleTagManagerBundle/tree/2.1.0) (2017-05-03)
 
 [Full Changelog](https://github.com/xyNNN/GoogleTagManagerBundle/compare/2.0.1...2.1.0)

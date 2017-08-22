@@ -54,13 +54,20 @@ class GoogleTagManagerListener
             ->getExtension('google_tag_manager')
             ->renderBody($this->twig);
 
+        // render pushes before </body>
+        $templateBeforeBodyEnd = $this->twig
+            ->getExtension('google_tag_manager')
+            ->renderBodyEnd($this->twig);
+
         // Insert container immediately after opening <head> or <body>
         $content = preg_replace(array(
             '/<head\b[^>]*>/',
-            '/<body\b[^>]*>/'
+            '/<body\b[^>]*>/',
+            '/<\/body\b[^>]*>/',
         ), array(
             "$0" . $templateHead,
-            "$0" . $templateBody
+            "$0" . $templateBody,
+            $templateBeforeBodyEnd . "$0"
         ), $response->getContent(), 1);
 
         // update the response
