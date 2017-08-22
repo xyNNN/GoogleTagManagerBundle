@@ -1,6 +1,9 @@
+<script>
+    window.dataLayer = window.dataLayer || [];
+</script>
+
 {% if data is not null %}
     <script>
-        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({{ data|json_encode|raw }});
     </script>
 {% endif %}
