@@ -40,4 +40,9 @@ interface GoogleTagManagerHelperInterface extends HelperInterface
      * @return bool
      */
     public function hasData();
+
+    /**
+     * @return array
+     */
+    public function getPush();
 }

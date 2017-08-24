@@ -57,4 +57,15 @@ interface GoogleTagManagerInterface
      * @return bool
      */
     public function hasData();
+
+    /**
+     * @return array
+     */
+    public function getPush();
+
+    /**
+     * @param $value
+     * @return void
+     */
+    public function addPush($value);
 }

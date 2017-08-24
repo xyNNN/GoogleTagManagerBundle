@@ -67,7 +67,7 @@ Please be aware to insert into right after the HTML body tag!
 
 ```html
 <body>
-{{ google_tag_manager_body }}
+{{ google_tag_manager_body() }}
 ...
 </body>
 ```
@@ -76,9 +76,16 @@ And right after the HTML head tag:
 
 ```html
 <head>
-{{ google_tag_manager_head }}
+{{ google_tag_manager_head() }}
 ...
 </head>
+```
+
+And right before the closing BODY tag:
+
+```html
+{{ google_tag_manager_body_end() }}
+</body>
 ```
 
 Or use the `autoAppend` setting to let a kernel reponse listener add them to your layout automatically.
@@ -93,6 +100,14 @@ If you want to send some information to the Google Tag Manager, you can use the 
 /** @var GoogleTagManagerInterface $manager */
 $manager = $this->get('google_tag_manager');
 $manager->setData('example', 'value');
+```
+
+And if you want to add pushes at the end of the body (not in initial dataLayer):
+
+```php
+/** @var GoogleTagManagerInterface $manager */
+$manager = $this->get('google_tag_manager');
+$manager->addPush(['test' => 123);
 ```
 
 ## Configuration
