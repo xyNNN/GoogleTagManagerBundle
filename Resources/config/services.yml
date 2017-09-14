@@ -22,6 +22,6 @@ services:
 
     listener.google_tag_manager:
         class: Xynnn\GoogleTagManagerBundle\EventListener\GoogleTagManagerListener
-        arguments: ["@service_container", "%google_tag_manager.autoAppend%"]
+        arguments: ["@twig", "@twig.extension.google_tag_manager", "%google_tag_manager.autoAppend%"]
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

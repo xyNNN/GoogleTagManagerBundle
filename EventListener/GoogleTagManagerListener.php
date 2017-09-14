@@ -2,6 +2,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\EventListener;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 
@@ -12,8 +13,15 @@ use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
  */
 class GoogleTagManagerListener
 {
+    /**
+     * @var \Twig_Environment
+     */
+    private $environment;
 
-    private $twig;
+    /**
+     * @var GoogleTagManagerExtension
+     */
+    private $extension;
 
     /**
      * @var bool
@@ -21,13 +29,14 @@ class GoogleTagManagerListener
     private $autoAppend;
 
     /**
-     * GoogleTagManagerListener constructor.
-     * @param $serviceContainer
-     * @param $autoAppend
+     * @param \Twig_Environment $environment
+     * @param GoogleTagManagerExtension $extension
+     * @param bool $autoAppend
      */
-    public function __construct($serviceContainer, $autoAppend)
+    public function __construct(\Twig_Environment $environment, GoogleTagManagerExtension $extension, $autoAppend)
     {
-        $this->twig = $serviceContainer->get('twig');
+        $this->environment = $environment;
+        $this->extension = $extension;
         $this->autoAppend = (bool)$autoAppend;
     }
 
@@ -38,37 +47,31 @@ class GoogleTagManagerListener
      */
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        if (!$this->allowRender($event)) {
+        if ( ! $this->allowRender($event)) {
             return false;
         }
 
         $response = $event->getResponse();
 
         // Render the GTM Twig template for after <head>
-        $templateHead = $this->twig
-            ->getExtension('google_tag_manager')
-            ->renderHead($this->twig);
+        $templateHead = $this->extension->renderHead($this->environment);
 
         // render the GTM Twig template for after <body>
-        $templateBody = $this->twig
-            ->getExtension('google_tag_manager')
-            ->renderBody($this->twig);
+        $templateBody = $this->extension->renderBody($this->environment);
 
         // render pushes before </body>
-        $templateBeforeBodyEnd = $this->twig
-            ->getExtension('google_tag_manager')
-            ->renderBodyEnd($this->twig);
+        $templateBeforeBodyEnd = $this->extension->renderBodyEnd($this->environment);
 
         // Insert container immediately after opening <head> or <body>
-        $content = preg_replace(array(
+        $content = preg_replace([
             '/<head\b[^>]*>/',
             '/<body\b[^>]*>/',
             '/<\/body\b[^>]*>/',
-        ), array(
+        ], [
             "$0" . $templateHead,
             "$0" . $templateBody,
-            $templateBeforeBodyEnd . "$0"
-        ), $response->getContent(), 1);
+            $templateBeforeBodyEnd . "$0",
+        ], $response->getContent(), 1);
 
         // update the response
         $response->setContent($content);
@@ -78,22 +81,23 @@ class GoogleTagManagerListener
 
     /**
      * @param FilterResponseEvent $event
+     *
      * @return bool
      */
     private function allowRender(FilterResponseEvent $event)
     {
         // not configured to append automatically
-        if (!$this->autoAppend) {
+        if ( ! $this->autoAppend) {
             return false;
         }
 
         // only append to HTML responses
-        if (!in_array($event->getResponse()->headers->get('content-type'), ['text/html', null])) {
+        if ( ! in_array($event->getResponse()->headers->get('content-type'), ['text/html', null])) {
             return false;
         }
 
         // only append to master request
-        if (!$event->isMasterRequest()) {
+        if ( ! $event->isMasterRequest()) {
             return false;
         }
 
