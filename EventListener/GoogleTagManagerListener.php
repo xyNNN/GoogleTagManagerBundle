@@ -63,15 +63,15 @@ class GoogleTagManagerListener
         $templateBeforeBodyEnd = $this->extension->renderBodyEnd($this->environment);
 
         // Insert container immediately after opening <head> or <body>
-        $content = preg_replace([
+        $content = preg_replace(array(
             '/<head\b[^>]*>/',
             '/<body\b[^>]*>/',
             '/<\/body\b[^>]*>/',
-        ], [
+        ), array(
             "$0" . $templateHead,
             "$0" . $templateBody,
             $templateBeforeBodyEnd . "$0",
-        ], $response->getContent(), 1);
+        ), $response->getContent(), 1);
 
         // update the response
         $response->setContent($content);
@@ -92,7 +92,7 @@ class GoogleTagManagerListener
         }
 
         // only append to HTML responses
-        if ( ! in_array($event->getResponse()->headers->get('content-type'), ['text/html', null])) {
+        if ( ! in_array($event->getResponse()->headers->get('content-type'), array('text/html', null))) {
             return false;
         }
 
