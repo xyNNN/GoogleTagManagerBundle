@@ -47,7 +47,7 @@ class GoogleTagManagerListener
      */
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        if ( ! $this->allowRender($event)) {
+        if (!$this->allowRender($event)) {
             return false;
         }
 
@@ -87,17 +87,17 @@ class GoogleTagManagerListener
     private function allowRender(FilterResponseEvent $event)
     {
         // not configured to append automatically
-        if ( ! $this->autoAppend) {
+        if (!$this->autoAppend) {
             return false;
         }
 
         // only append to HTML responses
-        if ( ! in_array($event->getResponse()->headers->get('content-type'), array('text/html', null))) {
+        if (!in_array($event->getResponse()->headers->get('content-type'), array('text/html', null))) {
             return false;
         }
 
         // only append to master request
-        if ( ! $event->isMasterRequest()) {
+        if (!$event->isMasterRequest()) {
             return false;
         }
 
