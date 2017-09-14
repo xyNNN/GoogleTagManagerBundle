@@ -9,6 +9,7 @@ php:
   - 7.1
 
 sudo: false
+dist: precise
 
 before_script:
     - composer self-update
