@@ -126,6 +126,8 @@ google_tag_manager:
 + [github/xyNNN](https://github.com/xyNNN)
 + [twitter/pbraeutigam](http://twitter.com/pbraeutigam)
 
+... and [Contributors](https://github.com/GoogleTagManagerBundle/Google/graphs/contributors)!
+
 ## License
 Copyright (c) 2017 Philipp Bräutigam
 This repository is released under the GNU LGPL v3.0 license.
