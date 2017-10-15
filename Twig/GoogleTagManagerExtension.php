@@ -143,7 +143,7 @@ class GoogleTagManagerExtension extends Twig_Extension
     private function getRenderedTemplate(\Twig_Environment $twig, $area)
     {
         if (!$this->helper->isEnabled()) {
-            return false;
+            return '';
         }
 
         return $twig->render(
