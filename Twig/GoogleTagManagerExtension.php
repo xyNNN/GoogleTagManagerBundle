@@ -147,7 +147,7 @@ class GoogleTagManagerExtension extends Twig_Extension
         }
 
         return $twig->render(
-            'GoogleTagManagerBundle::' . $this->getTemplate($area) . '.html.twig', array(
+            '@GoogleTagManager/' . $this->getTemplate($area) . '.html.twig', array(
                 'id' => $this->helper->getId(),
                 'data' => $this->helper->hasData() ? $this->helper->getData() : null,
                 'push' => $this->helper->getPush() ? $this->helper->getPush() : null,
