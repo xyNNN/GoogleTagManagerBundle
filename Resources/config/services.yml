@@ -1,4 +1,6 @@
 services:
+    _defaults: { public: true }
+
     google_tag_manager.factory:
         class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerFactory
         calls:
