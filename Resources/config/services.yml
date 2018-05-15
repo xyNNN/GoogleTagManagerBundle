@@ -25,7 +25,7 @@ services:
             - { name: "twig.extension" }
 
     listener.google_tag_manager:
-        public: false
+        public: true
         class: Xynnn\GoogleTagManagerBundle\EventListener\GoogleTagManagerListener
         arguments: ["@twig", "@twig.extension.google_tag_manager", "%google_tag_manager.autoAppend%"]
         tags:
