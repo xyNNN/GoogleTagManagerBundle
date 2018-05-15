@@ -4,7 +4,7 @@
     "description": "Google Tag Manager Bundle for Symfony",
     "keywords": ["Google Tag Manager", "Tag Manager"],
     "homepage": "https://github.com/xyNNN/GoogleTagManagerBundle",
-    "license": "GNU LGPL v3.0",
+    "license": "LGPL-3.0-only",
     "authors": [
         {
             "name": "Philipp Bräutigam",
