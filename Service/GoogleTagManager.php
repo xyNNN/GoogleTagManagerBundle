@@ -124,4 +124,13 @@ class GoogleTagManager implements GoogleTagManagerInterface
         return is_array($this->getData())
         && count($this->getData()) > 0;
     }
+
+    /**
+     * Reset internal state at the end of the request
+     */
+    public function reset()
+    {
+        $this->data = array();
+        $this->push = array();
+    }
 }

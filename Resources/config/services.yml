@@ -9,6 +9,8 @@ services:
         public: true
         class: Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager
         factory: ["@google_tag_manager.factory", create]
+        tags:
+            - { name: "kernel.reset", method: "reset" }
 
     templating.helper.google_tag_manager:
         public: false
