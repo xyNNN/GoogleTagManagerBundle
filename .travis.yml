@@ -15,7 +15,7 @@ dist: precise
 
 before_script:
     - composer self-update
-    - composer install
+    - COMPOSER_MEMORY_LIMIT=-1 composer install
 
 script:
     - vendor/bin/phpunit --coverage-clover coverage.clover --stderr --verbose
