@@ -10,9 +10,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Helper;
 
-use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\Helper\HelperInterface;
-use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManagerInterface;
 
 /**
  * Interface GoogleTagManagerHelperInterface

@@ -2,7 +2,6 @@
 
 namespace Xynnn\GoogleTagManagerBundle\EventListener;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 
 /**
