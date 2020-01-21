@@ -10,9 +10,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Twig;
 
-use Symfony\Component\Templating\Helper\HelperInterface;
 use Twig_Extension;
-use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper;
 use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
 
 /**

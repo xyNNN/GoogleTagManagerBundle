@@ -2,8 +2,6 @@
 
 namespace Xynnn\GoogleTagManagerBundle\EventListener;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 
 /**
@@ -41,11 +39,11 @@ class GoogleTagManagerListener
     }
 
     /**
-     * @param FilterResponseEvent $event
+     * @param mixed $event FilterResponseEvent before Symfony 5 and ResponseEvent afterwards
      *
      * @return bool
      */
-    public function onKernelResponse(FilterResponseEvent $event)
+    public function onKernelResponse($event)
     {
         if (!$this->allowRender($event)) {
             return false;
@@ -80,11 +78,11 @@ class GoogleTagManagerListener
     }
 
     /**
-     * @param FilterResponseEvent $event
+     * @param mixed $event FilterResponseEvent before Symfony 5 and ResponseEvent afterwards
      *
      * @return bool
      */
-    private function allowRender(FilterResponseEvent $event)
+    private function allowRender($event)
     {
         // not configured to append automatically
         if (!$this->autoAppend) {
