@@ -20,6 +20,12 @@ use Symfony\Component\Templating\Helper\HelperInterface;
 interface GoogleTagManagerHelperInterface extends HelperInterface
 {
     /**
+     * @param bool $status
+     * @return void
+     */
+    public function setEnabledStatus($status);
+
+    /**
      * @return bool
      */
     public function isEnabled();
@@ -28,6 +34,12 @@ interface GoogleTagManagerHelperInterface extends HelperInterface
      * @return string
      */
     public function getId();
+
+    /**
+     * @param string $id
+     * @return void
+     */
+    public function setId($id);
 
     /**
      * @return array

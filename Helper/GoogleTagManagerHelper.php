@@ -36,6 +36,14 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     /**
      * {@inheritdoc}
      */
+    public function setEnabledStatus($status)
+    {
+        $this->service->setEnabledStatus($status);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function isEnabled()
     {
         return $this->service->isEnabled();
@@ -47,6 +55,14 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     public function getId()
     {
         return $this->service->getId();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setId($id)
+    {
+        $this->service->setId($id);
     }
 
     /**

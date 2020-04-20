@@ -39,6 +39,12 @@ interface GoogleTagManagerInterface
     public function mergeData($key, $value);
 
     /**
+     * @param bool $status
+     * @return void
+     */
+    public function setEnabledStatus($status);
+
+    /**
      * @return bool
      */
     public function isEnabled();
@@ -47,6 +53,12 @@ interface GoogleTagManagerInterface
      * @return string
      */
     public function getId();
+
+    /**
+     * @param string $id
+     * @return void
+     */
+    public function setId($id);
 
     /**
      * @return array

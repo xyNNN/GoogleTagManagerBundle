@@ -79,6 +79,14 @@ class GoogleTagManager implements GoogleTagManagerInterface
     /**
      * {@inheritdoc}
      */
+    public function setEnabledStatus($status)
+    {
+        $this->enabled = $status;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function isEnabled()
     {
         return $this->enabled;
@@ -90,6 +98,14 @@ class GoogleTagManager implements GoogleTagManagerInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
