@@ -36,9 +36,17 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     /**
      * {@inheritdoc}
      */
-    public function setEnabledStatus($status)
+    public function enable()
     {
-        $this->service->setEnabledStatus($status);
+        $this->service->enable();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable()
+    {
+        $this->service->disable();
     }
 
     /**

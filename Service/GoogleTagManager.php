@@ -79,9 +79,17 @@ class GoogleTagManager implements GoogleTagManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setEnabledStatus($status)
+    public function enable()
     {
-        $this->enabled = $status;
+        $this->enabled = true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable()
+    {
+        $this->enabled = false;
     }
 
     /**

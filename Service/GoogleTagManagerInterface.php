@@ -39,10 +39,14 @@ interface GoogleTagManagerInterface
     public function mergeData($key, $value);
 
     /**
-     * @param bool $status
      * @return void
      */
-    public function setEnabledStatus($status);
+    public function enable();
+
+    /**
+     * @return void
+     */
+    public function disable();
 
     /**
      * @return bool
