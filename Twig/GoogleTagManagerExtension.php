@@ -10,7 +10,10 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Twig;
 
-use Twig_Extension;
+use Symfony\Component\Templating\Helper\HelperInterface;
+use Twig\TwigFunction;
+
+use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelper;
 use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
 
 /**
@@ -18,7 +21,7 @@ use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
  *
  * @package Xynnn\GoogleTagManagerBundle\Extension
  */
-class GoogleTagManagerExtension extends Twig_Extension
+class GoogleTagManagerExtension extends \Twig\Extension\AbstractExtension
 {
     const AREA_FULL = 'full';
     const AREA_HEAD = 'head';
@@ -44,20 +47,20 @@ class GoogleTagManagerExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('google_tag_manager', array($this, 'render'), array(
+            new TwigFunction('google_tag_manager', array($this, 'render'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
                 'deprecated' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_body', array($this, 'renderBody'), array(
+            new TwigFunction('google_tag_manager_body', array($this, 'renderBody'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_head', array($this, 'renderHead'), array(
+            new TwigFunction('google_tag_manager_head', array($this, 'renderHead'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_body_end', array($this, 'renderBodyEnd'), array(
+            new TwigFunction('google_tag_manager_body_end', array($this, 'renderBodyEnd'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
