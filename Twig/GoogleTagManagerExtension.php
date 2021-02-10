@@ -10,7 +10,9 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Twig;
 
-use Twig_Extension;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
 
 /**
@@ -18,7 +20,7 @@ use Xynnn\GoogleTagManagerBundle\Helper\GoogleTagManagerHelperInterface;
  *
  * @package Xynnn\GoogleTagManagerBundle\Extension
  */
-class GoogleTagManagerExtension extends Twig_Extension
+class GoogleTagManagerExtension extends AbstractExtension
 {
     const AREA_FULL = 'full';
     const AREA_HEAD = 'head';
@@ -44,20 +46,20 @@ class GoogleTagManagerExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('google_tag_manager', array($this, 'render'), array(
+            new TwigFunction('google_tag_manager', array($this, 'render'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
                 'deprecated' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_body', array($this, 'renderBody'), array(
+            new TwigFunction('google_tag_manager_body', array($this, 'renderBody'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_head', array($this, 'renderHead'), array(
+            new TwigFunction('google_tag_manager_head', array($this, 'renderHead'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
-            new \Twig_SimpleFunction('google_tag_manager_body_end', array($this, 'renderBodyEnd'), array(
+            new TwigFunction('google_tag_manager_body_end', array($this, 'renderBodyEnd'), array(
                 'is_safe' => array('html'),
                 'needs_environment' => true,
             )),
@@ -65,43 +67,43 @@ class GoogleTagManagerExtension extends Twig_Extension
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      *
      * @deprecated Use `renderHead` and `renderBody`
      *
      * @return string
      */
-    public function render(\Twig_Environment $twig)
+    public function render(Environment $twig)
     {
         return $this->getRenderedTemplate($twig, self::AREA_FULL);
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      *
      * @return string
      */
-    public function renderHead(\Twig_Environment $twig)
+    public function renderHead(Environment $twig)
     {
         return $this->getRenderedTemplate($twig, self::AREA_HEAD);
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      *
      * @return string
      */
-    public function renderBody(\Twig_Environment $twig)
+    public function renderBody(Environment $twig)
     {
         return $this->getRenderedTemplate($twig, self::AREA_BODY);
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      *
      * @return string
      */
-    public function renderBodyEnd(\Twig_Environment $twig)
+    public function renderBodyEnd(Environment $twig)
     {
         return $this->getRenderedTemplate($twig, self::AREA_BODY_END);
     }
@@ -134,11 +136,11 @@ class GoogleTagManagerExtension extends Twig_Extension
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      * @param $area
      * @return string
      */
-    private function getRenderedTemplate(\Twig_Environment $twig, $area)
+    private function getRenderedTemplate(Environment $twig, $area)
     {
         if (!$this->helper->isEnabled()) {
             return '';
