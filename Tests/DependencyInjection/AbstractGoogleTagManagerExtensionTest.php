@@ -45,7 +45,7 @@ abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_T
     public function testWithoutConfiguration()
     {
         // An extension is only loaded in the container if a configuration is provided for it.
-        // Then, we need to explicitely load it.
+        // Then, we need to explicitly load it.
         $this->container->loadFromExtension($this->extension->getAlias());
         $this->container->compile();
 
