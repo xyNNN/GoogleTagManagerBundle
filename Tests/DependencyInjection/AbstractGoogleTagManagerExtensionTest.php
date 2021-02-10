@@ -31,8 +31,12 @@ abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_T
     {
         $this->extension = new GoogleTagManagerExtension();
 
+        $twigMock = $this->getMockBuilder('\Twig\Environment')
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->container = new ContainerBuilder();
-        $this->container->register('twig', $this->getMockBuilder('\Twig\Environment')->disableOriginalConstructor()->getMock());
+        $this->container->register('twig', get_class($twigMock));
         $this->container->registerExtension($this->extension);
     }
 
