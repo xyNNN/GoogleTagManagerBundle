@@ -2,6 +2,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\EventListener;
 
+use Twig\Environment;
 use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 
 /**
@@ -12,7 +13,7 @@ use Xynnn\GoogleTagManagerBundle\Twig\GoogleTagManagerExtension;
 class GoogleTagManagerListener
 {
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     private $environment;
 
@@ -27,11 +28,11 @@ class GoogleTagManagerListener
     private $autoAppend;
 
     /**
-     * @param \Twig_Environment $environment
+     * @param Environment $environment
      * @param GoogleTagManagerExtension $extension
      * @param bool $autoAppend
      */
-    public function __construct(\Twig_Environment $environment, GoogleTagManagerExtension $extension, $autoAppend)
+    public function __construct(Environment $environment, GoogleTagManagerExtension $extension, $autoAppend)
     {
         $this->environment = $environment;
         $this->extension = $extension;
