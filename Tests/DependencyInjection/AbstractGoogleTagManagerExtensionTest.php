@@ -31,8 +31,12 @@ abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_T
     {
         $this->extension = new GoogleTagManagerExtension();
 
+        $twigMock = $this->getMockBuilder('\Twig\Environment')
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->container = new ContainerBuilder();
-        $this->container->register('twig', $this->getMockBuilder('\Twig_Environment')->disableOriginalConstructor()->getMock());
+        $this->container->register('twig', get_class($twigMock));
         $this->container->registerExtension($this->extension);
     }
 
@@ -45,7 +49,7 @@ abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_T
     public function testWithoutConfiguration()
     {
         // An extension is only loaded in the container if a configuration is provided for it.
-        // Then, we need to explicitely load it.
+        // Then, we need to explicitly load it.
         $this->container->loadFromExtension($this->extension->getAlias());
         $this->container->compile();
 
