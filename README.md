@@ -11,7 +11,14 @@ The GoogleTagManagerBundle provides you an easy-to-use method to integrate the G
 
 ## Requirements
 
+## 2.x
+
 - [x] PHP 5.3 and higher
+- [x] Symfony 2.8 and higher
+
+## 3.x
+
+- [x] PHP 5.6 and higher
 - [x] Symfony 2.8 and higher
 
 ## Install
@@ -21,8 +28,17 @@ The GoogleTagManagerBundle provides you an easy-to-use method to integrate the G
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
+#### 2.x
+
 ```bash
 $ composer require xynnn/google-tag-manager-bundle "~2.0"
+```
+
+#### 3.x
+
+
+```bash
+$ composer require xynnn/google-tag-manager-bundle "~3.0"
 ```
 
 This command requires you to have Composer installed globally, as explained
