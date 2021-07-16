@@ -84,4 +84,15 @@ interface GoogleTagManagerInterface
      * @return void
      */
     public function addPush($value);
+
+        /**
+     * @param string $additionalParameters
+     * @return void
+     */
+    public function setAdditionalParameters($additionalParameters);
+
+    /**
+     * @return string
+     */
+    public function getAdditionalParameters();
 }

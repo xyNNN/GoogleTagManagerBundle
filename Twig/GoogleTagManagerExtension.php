@@ -146,11 +146,14 @@ class GoogleTagManagerExtension extends AbstractExtension
             return '';
         }
 
+        $additionalParameters = $this->helper->getAdditionalParameters();
+
         return $twig->render(
             '@GoogleTagManager/' . $this->getTemplate($area) . '.html.twig', array(
                 'id' => $this->helper->getId(),
                 'data' => $this->helper->hasData() ? $this->helper->getData() : null,
                 'push' => $this->helper->getPush() ? $this->helper->getPush() : null,
+                'url_suffix' => $additionalParameters ? '&'.trim($additionalParameters,'&') : ''
             )
         );
     }

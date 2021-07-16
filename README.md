@@ -135,6 +135,12 @@ google_tag_manager:
     autoAppend: true|false
 ```
 
+An optional paramater called `additionalParamaters` allows specifying URL parameters to add on to the tag manager URLs.  This can be used to support custom environments in tag manager.
+```yaml
+google_tag_manager:
+    additionalParameters: gtm_auth=XXXXXXXXXXXXX&gtm_preview=env-30&gtm_cookies_win=x
+```
+
 ## Authors
 
 **Philipp Bräutigam**

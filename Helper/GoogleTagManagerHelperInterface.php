@@ -59,4 +59,15 @@ interface GoogleTagManagerHelperInterface extends HelperInterface
      * @return array
      */
     public function getPush();
+
+    /**
+     * @param string $additionalParameters
+     * @return void
+     */
+    public function setAdditionalParameters($additionalParameters);
+
+    /**
+     * @return string
+     */
+    public function getAdditionalParameters();
 }
