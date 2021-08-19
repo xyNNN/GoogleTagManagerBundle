@@ -39,6 +39,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('enabled')->end()
                 ->scalarNode('id')->end()
                 ->booleanNode('autoAppend')->defaultFalse()->end()
+                ->scalarNode('additionalParameters')->defaultNull()->end()
             ->end();
 
         return $treeBuilder;

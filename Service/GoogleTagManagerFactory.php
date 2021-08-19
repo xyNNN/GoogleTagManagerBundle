@@ -39,8 +39,14 @@ class GoogleTagManagerFactory
 
         $enabled = $container->getParameter('google_tag_manager.enabled');
         $id = $container->getParameter('google_tag_manager.id');
+        $additionalParameters = $container->getParameter('google_tag_manager.additionalParameters');
 
         $service = new GoogleTagManager($enabled, $id);
+
+        if ($additionalParameters)
+        {
+            $service->setAdditionalParameters($container->getParameter('google_tag_manager.additionalParameters'));
+        }
 
         return $service;
     }

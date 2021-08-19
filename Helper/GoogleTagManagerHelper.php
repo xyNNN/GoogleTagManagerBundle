@@ -104,4 +104,20 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     {
         return 'google_tag_manager';
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAdditionalParameters($additionalParameters)
+    {
+        $this->service->setAdditionalParameters($additionalParameters);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAdditionalParameters()
+    {
+        return $this->service->getAdditionalParameters();
+    }
 }

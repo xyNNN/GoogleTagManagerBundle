@@ -38,6 +38,11 @@ class GoogleTagManager implements GoogleTagManagerInterface
     private $push = array();
 
     /**
+     * @var string
+     */
+    private $additionalParameters;
+
+    /**
      * @param $enabled
      * @param $id
      */
@@ -156,5 +161,21 @@ class GoogleTagManager implements GoogleTagManagerInterface
     {
         $this->data = array();
         $this->push = array();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAdditionalParameters($additionalParameters)
+    {
+        $this->additionalParameters = $additionalParameters;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAdditionalParameters()
+    {
+        return $this->additionalParameters;
     }
 }
