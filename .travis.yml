@@ -11,8 +11,7 @@ php:
 sudo: false
 dist: precise
 
-before_script:
-    - composer self-update
+before_script:    
     - COMPOSER_MEMORY_LIMIT=-1 composer install
 
 script:
