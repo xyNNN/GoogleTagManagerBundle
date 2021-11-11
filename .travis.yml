@@ -14,11 +14,7 @@ before_script:
     - COMPOSER_MEMORY_LIMIT=-1 composer install
 
 script:
-    - vendor/bin/phpunit --coverage-clover coverage.clover --stderr --verbose
-
-after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    - vendor/bin/phpunit --stderr --verbose
 
 notifications:
   email: philipp.braeutigam@googlemail.com
