@@ -9,7 +9,7 @@ php:
   - nightly
 
 sudo: false
-dist: precise
+dist: bionic
 
 before_script:    
     - COMPOSER_MEMORY_LIMIT=-1 composer install
