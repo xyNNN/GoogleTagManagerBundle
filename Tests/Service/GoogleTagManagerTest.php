@@ -10,7 +10,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Tests\Service;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager;
 
 /**
@@ -18,7 +18,7 @@ use Xynnn\GoogleTagManagerBundle\Service\GoogleTagManager;
  *
  * @package Xynnn\GoogleTagManagerBundle\Tests\Service
  */
-class GoogleTagManagerTest extends PHPUnit_Framework_TestCase
+class GoogleTagManagerTest extends TestCase
 {
     public function testEnabledConfiguration()
     {

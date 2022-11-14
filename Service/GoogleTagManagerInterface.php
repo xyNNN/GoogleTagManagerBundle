@@ -18,81 +18,33 @@ namespace Xynnn\GoogleTagManagerBundle\Service;
 interface GoogleTagManagerInterface
 {
     /**
-     * @param $key
-     * @param $value
      * @deprecated Use 'setData' or 'mergeData' methods
      */
-    public function addData($key, $value);
+    public function addData(string $key, mixed $value);
 
-    /**
-     * @param $key
-     * @param $value
-     * @return void
-     */
-    public function setData($key, $value);
+    public function setData(string $key, mixed $value): void;
 
-    /**
-     * @param $key
-     * @param $value
-     * @return void
-     */
-    public function mergeData($key, $value);
+    public function mergeData(string $key, mixed $value): void;
 
-    /**
-     * @return void
-     */
-    public function enable();
+    public function enable(): void;
 
-    /**
-     * @return void
-     */
-    public function disable();
+    public function disable(): void;
 
-    /**
-     * @return bool
-     */
-    public function isEnabled();
+    public function isEnabled(): bool;
 
-    /**
-     * @return string
-     */
-    public function getId();
+    public function getId(): string;
 
-    /**
-     * @param string $id
-     * @return void
-     */
-    public function setId($id);
+    public function setId(string $id): void;
 
-    /**
-     * @return array
-     */
-    public function getData();
+    public function getData(): array;
 
-    /**
-     * @return bool
-     */
-    public function hasData();
+    public function hasData(): bool;
 
-    /**
-     * @return array
-     */
-    public function getPush();
+    public function getPush(): array;
 
-    /**
-     * @param $value
-     * @return void
-     */
-    public function addPush($value);
+    public function addPush($value): void;
 
-        /**
-     * @param string $additionalParameters
-     * @return void
-     */
-    public function setAdditionalParameters($additionalParameters);
+    public function setAdditionalParameters(string $additionalParameters): void;
 
-    /**
-     * @return string
-     */
-    public function getAdditionalParameters();
+    public function getAdditionalParameters(): string;
 }

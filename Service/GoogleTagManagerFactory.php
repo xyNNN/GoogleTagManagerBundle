@@ -22,18 +22,12 @@ class GoogleTagManagerFactory
 {
     use ContainerAwareTrait;
 
-    /**
-     * @return ContainerInterface
-     */
-    private function getContainer()
+    private function getContainer(): ContainerInterface
     {
         return $this->container;
     }
 
-    /**
-     * @return GoogleTagManagerInterface
-     */
-    public function create()
+    public function create(): GoogleTagManagerInterface
     {
         $container = $this->getContainer();
 

@@ -10,7 +10,7 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Tests\DependencyInjection;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Xynnn\GoogleTagManagerBundle\DependencyInjection\GoogleTagManagerExtension;
 
@@ -19,7 +19,7 @@ use Xynnn\GoogleTagManagerBundle\DependencyInjection\GoogleTagManagerExtension;
  *
  * @package Xynnn\GoogleTagManagerBundle\Tests\DependencyInjection
  */
-abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_TestCase
+abstract class AbstractGoogleTagManagerExtensionTest extends TestCase
 {
     /** @var GoogleTagManagerExtension $extension */
     private $extension;
@@ -27,7 +27,7 @@ abstract class AbstractGoogleTagManagerExtensionTest extends PHPUnit_Framework_T
     /** @var ContainerBuilder $container */
     private $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new GoogleTagManagerExtension();
 
