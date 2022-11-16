@@ -17,61 +17,33 @@ namespace Xynnn\GoogleTagManagerBundle\Service;
  */
 class GoogleTagManager implements GoogleTagManagerInterface
 {
-    /**
-     * @var bool
-     */
-    private $enabled;
+    private bool $enabled;
 
-    /**
-     * @var string
-     */
-    private $id;
+    private string $id;
 
-    /**
-     * @var array
-     */
-    private $data = array();
+    private array $data = array();
 
-    /**
-     * @var array
-     */
-    private $push = array();
+    private array $push = array();
 
-    /**
-     * @var string
-     */
-    private $additionalParameters;
+    private string $additionalParameters;
 
-    /**
-     * @param $enabled
-     * @param $id
-     */
-    public function __construct($enabled, $id)
+    public function __construct(bool $enabled, string $id)
     {
-        $this->enabled = (bool)$enabled;
+        $this->enabled = $enabled;
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function addData($key, $value)
+    public function addData(string $key, mixed $value)
     {
         $this->setData($key, $value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setData($key, $value)
+    public function setData(string $key, mixed $value): void
     {
         $this->data[$key] = $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function mergeData($key, $value)
+    public function mergeData(string $key, mixed $value): void
     {
         $merge = array();
         if (array_key_exists($key, $this->data)) {
@@ -81,100 +53,64 @@ class GoogleTagManager implements GoogleTagManagerInterface
         $this->setData($key, array_merge_recursive($merge, $value));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function enable()
+    public function enable(): void
     {
         $this->enabled = true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function disable()
+    public function disable(): void
     {
         $this->enabled = false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function addPush($value)
+    public function addPush($value): void
     {
         $this->push[] = $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getPush()
+    public function getPush(): array
     {
         return $this->push;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function hasData()
+    public function hasData(): bool
     {
         return is_array($this->getData())
         && count($this->getData()) > 0;
     }
 
-    /**
-     * Reset internal state at the end of the request
-     */
-    public function reset()
+    public function reset(): void
     {
         $this->data = array();
         $this->push = array();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setAdditionalParameters($additionalParameters)
+    public function setAdditionalParameters($additionalParameters): void
     {
         $this->additionalParameters = $additionalParameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAdditionalParameters()
+    public function getAdditionalParameters(): string
     {
         return $this->additionalParameters;
     }

@@ -15,28 +15,28 @@ class GoogleTagManagerListener
     /**
      * @var Environment
      */
-    private $environment;
+    private Environment $environment;
 
     /**
      * @var GoogleTagManagerExtension
      */
-    private $extension;
+    private GoogleTagManagerExtension $extension;
 
     /**
      * @var bool
      */
-    private $autoAppend;
+    private bool $autoAppend;
 
     /**
      * @param Environment $environment
      * @param GoogleTagManagerExtension $extension
      * @param bool $autoAppend
      */
-    public function __construct(Environment $environment, GoogleTagManagerExtension $extension, $autoAppend)
+    public function __construct(Environment $environment, GoogleTagManagerExtension $extension, bool $autoAppend)
     {
         $this->environment = $environment;
         $this->extension = $extension;
-        $this->autoAppend = (bool)$autoAppend;
+        $this->autoAppend = $autoAppend;
     }
 
     /**
@@ -44,7 +44,7 @@ class GoogleTagManagerListener
      *
      * @return bool
      */
-    public function onKernelResponse($event)
+    public function onKernelResponse(mixed $event): bool
     {
         if (!$this->allowRender($event)) {
             return false;
@@ -83,7 +83,7 @@ class GoogleTagManagerListener
      *
      * @return bool
      */
-    private function allowRender($event)
+    private function allowRender(mixed $event): bool
     {
         // not configured to append automatically
         if (!$this->autoAppend) {

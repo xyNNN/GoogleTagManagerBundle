@@ -23,7 +23,7 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
     /**
      * @var GoogleTagManagerInterface
      */
-    private $service;
+    private GoogleTagManagerInterface $service;
 
     /**
      * @param GoogleTagManagerInterface $service
@@ -33,90 +33,57 @@ class GoogleTagManagerHelper extends Helper implements GoogleTagManagerHelperInt
         $this->service = $service;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function enable()
+    public function enable(): void
     {
         $this->service->enable();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function disable()
+    public function disable(): void
     {
         $this->service->disable();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->service->isEnabled();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    public function getId(): string
     {
         return $this->service->getId();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->service->setId($id);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
+    public function getData(): array
     {
         return $this->service->getData();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function hasData()
+    public function hasData(): bool
     {
         return $this->service->hasData();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getPush()
+    public function getPush(): array
     {
         return $this->service->getPush();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'google_tag_manager';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setAdditionalParameters($additionalParameters)
+    public function setAdditionalParameters($additionalParameters): void
     {
         $this->service->setAdditionalParameters($additionalParameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAdditionalParameters()
+    public function getAdditionalParameters(): string
     {
         return $this->service->getAdditionalParameters();
     }

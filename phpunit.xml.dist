@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./Tests/bootstrap.php">
-	<testsuites>
-		<testsuite name="GoogleTagManagerBundle Test Suite">
-			<directory suffix="Test.php">./Tests</directory>
-		</testsuite>
-	</testsuites>
-	<filter>
-		<whitelist>
-			<directory>./</directory>
-			<exclude>
-				<directory>./Tests</directory>
-			</exclude>
-		</whitelist>
-	</filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./Tests/bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory>./</directory>
+    </include>
+    <exclude>
+      <directory>./Tests</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="GoogleTagManagerBundle Test Suite">
+      <directory suffix="Test.php">./Tests</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
