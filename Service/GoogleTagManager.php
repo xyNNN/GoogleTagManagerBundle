@@ -25,7 +25,7 @@ class GoogleTagManager implements GoogleTagManagerInterface
 
     private array $push = array();
 
-    private string $additionalParameters;
+    private string $additionalParameters = '';
 
     public function __construct(bool $enabled, string $id)
     {
