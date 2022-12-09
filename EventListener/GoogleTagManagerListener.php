@@ -95,8 +95,13 @@ class GoogleTagManagerListener
             return false;
         }
 
-        // only append to master request
-        if (!$event->isMasterRequest()) {
+        // only append to main request (symfony >= 5)
+        if ($event instanceof \Symfony\Component\HttpKernel\Event\ResponseEvent && !$event->isMainRequest()) {
+            return false;
+        }
+
+        // only append to master request (symfony < 5)
+        if ($event instanceof \Symfony\Component\HttpKernel\Event\FilterResponseEvent && !$event->isMasterRequest()) {
             return false;
         }
 
