@@ -10,7 +10,6 @@
 
 namespace Xynnn\GoogleTagManagerBundle\Service;
 
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -20,16 +19,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class GoogleTagManagerFactory
 {
-    use ContainerAwareTrait;
+    private ContainerInterface $container;
 
-    private function getContainer(): ContainerInterface
+    public function setContainer(ContainerInterface $container): ContainerInterface
     {
-        return $this->container;
+        return $this->container = $container;
     }
 
     public function create(): GoogleTagManagerInterface
     {
-        $container = $this->getContainer();
+        $container = $this->container;
 
         $enabled = $container->getParameter('google_tag_manager.enabled');
         $id = $container->getParameter('google_tag_manager.id');
